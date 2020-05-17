@@ -19,11 +19,13 @@ public class KeyCodeCheckLoop : MonoBehaviour
     public KeyCodeReference DownIn;
     public KeyCodeReference LeftIn;
     public KeyCodeReference RightIn;
+    public KeyCodeReference JumpIn;
 
     public BoolVariable UpOut;
     public BoolVariable DownOut;
     public BoolVariable LeftOut;
     public BoolVariable RightOut;
+    public BoolVariable JumpOut;
 
     void Start()
     {
@@ -47,5 +49,6 @@ public class KeyCodeCheckLoop : MonoBehaviour
         DownOut.SetValue(Input.GetKey(DownIn));
         LeftOut.SetValue(Input.GetKey(LeftIn));
         RightOut.SetValue(Input.GetKey(RightIn));
+        JumpOut.SetValue(Input.GetKey(JumpIn));
     }
 }

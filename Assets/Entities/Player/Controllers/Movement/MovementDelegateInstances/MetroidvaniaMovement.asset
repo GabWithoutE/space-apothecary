@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0cfc4b7b354b7981566431b37673f3, type: 3}
+  m_Name: MetroidvaniaMovement
+  m_EditorClassIdentifier: 
+  IsJumping: {fileID: 0}
+  IsGrounded: {fileID: 0}
+  XDirection: {fileID: 11400000, guid: 085f07cff040144a2b2ab4a1f4a690ff, type: 2}
+  YDirection: {fileID: 11400000, guid: fba01b7645a6b46bf841edfb70719447, type: 2}
+  GravityDelegate: {fileID: 11400000, guid: f3e4c4ad275654219bb1ef36b54b96e6, type: 2}
+  HorizontalMovementDelegate: {fileID: 11400000, guid: 543e18262ce4a4f59b0faaaab8afd241,
+    type: 2}
