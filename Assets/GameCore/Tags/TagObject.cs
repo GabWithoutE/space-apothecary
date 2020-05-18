@@ -2,7 +2,7 @@
 
 namespace GameCore.Tags
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Collision/TagObject")]
     public class TagObject : ScriptableObject
     { }
 }

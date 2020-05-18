@@ -19,3 +19,5 @@ MonoBehaviour:
   GravityDelegate: {fileID: 11400000, guid: f3e4c4ad275654219bb1ef36b54b96e6, type: 2}
   HorizontalMovementDelegate: {fileID: 11400000, guid: 543e18262ce4a4f59b0faaaab8afd241,
     type: 2}
+  GroundCollisionDetector: {fileID: 11400000, guid: e276358df78f7459d80e15f308a3aa5e,
+    type: 2}

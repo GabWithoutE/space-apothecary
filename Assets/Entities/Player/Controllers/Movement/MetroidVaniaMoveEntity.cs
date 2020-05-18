@@ -1,3 +1,4 @@
+using GameCore.Collision;
 using GameCore.Variables.Primitives;
 using UnityEngine;
 
@@ -12,10 +13,14 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
 
     public GravityDelegate GravityDelegate;
     public HorizontalMovementDelegate HorizontalMovementDelegate;
+    public DetectCollision GroundCollisionDetector;
 
     public override void Move(Transform entityTransform)
     {
-        GravityDelegate.Move(entityTransform);
+        if (!GroundCollisionDetector.IsColliding(entityTransform))
+        {
+            GravityDelegate.Move(entityTransform);
+        }
         HorizontalMovementDelegate.Move(entityTransform);
     }
 }

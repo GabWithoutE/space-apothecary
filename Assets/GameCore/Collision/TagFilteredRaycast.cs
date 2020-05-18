@@ -18,14 +18,8 @@ namespace GameCore.Collision
         {
             RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance, layerMask);
             // If there's no hit, stop here and return the empty hit.
-            try
-            {
-                string _ = hit.transform.name;
-            }
-            catch
-            {
+            if (!HasHit(hit))
                 return hit;
-            }
 
             // If not hitTags are specified, then just return anything that is hit.
             if (hitTags == null ^ hitTags.Count == 0)
@@ -43,6 +37,19 @@ namespace GameCore.Collision
                 return new RaycastHit2D();
 
             return hit;
+        }
+
+        public static bool HasHit(RaycastHit2D raycastHit)
+        {
+            try
+            {
+                string _ = raycastHit.transform.name;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private static bool HasAnyOfTags(List<TagObject> reference, List<TagObject> test)

@@ -512,6 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tags:
   - {fileID: 11400000, guid: 4d014753a137247ccaf0c3944fe89efe, type: 2}
+  - {fileID: 11400000, guid: ce7bd9c3b9e3641c4a47ebc92b859059, type: 2}
 --- !u!1 &1943268522
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,8 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5cb9bf8e5de43b2aafa529cfeb52db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveEntityDelegate: {fileID: 11400000, guid: d6adbf7ccc7fe4d6d86e2840935d58c6, type: 2}
-  HitTags: []
+  MoveEntityDelegate: {fileID: 11400000, guid: d6adbf7ccc7fe4d6d86e2840935d58c6, type: 2}
 --- !u!114 &1943268527
 MonoBehaviour:
   m_ObjectHideFlags: 0
