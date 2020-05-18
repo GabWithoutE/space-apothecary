@@ -14,11 +14,17 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
     public IntVariable YDirection;
     public BoolVariable JumpInputOn;
 
-    public GravityDelegate GravityDelegate;
-    public HorizontalMovementDelegate HorizontalMovementDelegate;
-    public JumpDelegate JumpDelegate;
+    public MoveEntityOnAxisDelegate JumpDelegate;
+    public DetectCollisionDelegate CeilingCollisionDelegate;
+    public DetectCollisionDelegate CeilingLocatorDelegate;
 
-    public DetectCollision GroundCollisionDetector;
+    public MoveEntityOnAxisDelegate GravityDelegate;
+    public DetectCollisionDelegate GroundCollisionDetector;
+    public DetectCollisionDelegate GroundLocatorDelegate;
+
+    public MoveEntityOnAxisDelegate RunningDelegate;
+    public DetectCollisionDelegate RightWallLocatorDelegate;
+    public DetectCollisionDelegate LeftWallLocatorDelegate;
 
     private float uninteruptedRunTime = 0;
     private float uninteruptedFallTime = 0;
@@ -43,13 +49,17 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
         ComputeTimeModifiers();
 
         if (!isJumping)
-        // {
-            GravityDelegate.Move(entityTransform, uninteruptedFallTime);
-        // }
+            GravityDelegate.Move(entityTransform, uninteruptedFallTime, GroundLocatorDelegate, Vector2.down);
         else
-            JumpDelegate.Move(entityTransform, uninteruptedJumptime);
+            JumpDelegate.Move(entityTransform, uninteruptedJumptime, CeilingLocatorDelegate,Vector2.up);
 
-        HorizontalMovementDelegate.Move(entityTransform, uninteruptedRunTime);
+        if (XDirection.Value != 0)
+            RunningDelegate.Move(
+                entityTransform,
+                uninteruptedRunTime,
+                XDirection.Value == 1 ? RightWallLocatorDelegate : LeftWallLocatorDelegate,
+                new Vector2(XDirection.Value, 0)
+            );
     }
 
     private void ComputeTimeModifiers()

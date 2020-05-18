@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1dbb30bfd5ee4bd29526717677f0752, type: 3}
-  m_Name: GroundLocationDetector
+  m_Name: GroundLocationDetectorDelegate
   m_EditorClassIdentifier: 
   Description: Detects the ground that the player is going to land on to return information
     about the ground.
   CollisionDetectionRays:
-  - OriginPosition: {x: -5, y: 0}
+  - OriginPosition: {x: -4.9, y: 0}
     Direction: {x: 0, y: -1}
     Distance: 100
   - OriginPosition: {x: 0, y: 0}
     Direction: {x: 0, y: -1}
     Distance: 100
-  - OriginPosition: {x: 5, y: 0}
+  - OriginPosition: {x: 4.9, y: 0}
     Direction: {x: 0, y: -1}
     Distance: 100
   CollisionTags:

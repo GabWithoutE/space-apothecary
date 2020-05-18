@@ -7,8 +7,8 @@ using UnityEngine;
 
 namespace GameCore.Collision
 {
-   [CreateAssetMenu(menuName = "Collision/DetectCollision")]
-   public class DetectCollision : ScriptableObject
+   [CreateAssetMenu(menuName = "Collision/DetectCollisionDelegate")]
+   public class DetectCollisionDelegate : ScriptableObject
    {
 #if UNITY_EDITOR
       [Multiline]

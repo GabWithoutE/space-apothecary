@@ -25,9 +25,18 @@ MonoBehaviour:
   XDirection: {fileID: 11400000, guid: 085f07cff040144a2b2ab4a1f4a690ff, type: 2}
   YDirection: {fileID: 11400000, guid: fba01b7645a6b46bf841edfb70719447, type: 2}
   JumpInputOn: {fileID: 11400000, guid: 9cce60db46a7e4601815ed0bd7e57413, type: 2}
-  GravityDelegate: {fileID: 11400000, guid: f3e4c4ad275654219bb1ef36b54b96e6, type: 2}
-  HorizontalMovementDelegate: {fileID: 11400000, guid: 543e18262ce4a4f59b0faaaab8afd241,
+  JumpDelegate: {fileID: 11400000, guid: d1c0a5017b267437c9d0c1ef6719fad5, type: 2}
+  CeilingCollisionDelegate: {fileID: 11400000, guid: 2f1f05b211a0e4d629d8615349583e10,
     type: 2}
-  JumpDelegate: {fileID: 11400000, guid: 50a919bf4c181420bbf638b42352c574, type: 2}
+  CeilingLocatorDelegate: {fileID: 11400000, guid: 9d613bd8ae4f74baf8a90cc1ffc24b19,
+    type: 2}
+  GravityDelegate: {fileID: 11400000, guid: 0985df53273d24439abb399cdc21ed13, type: 2}
   GroundCollisionDetector: {fileID: 11400000, guid: e276358df78f7459d80e15f308a3aa5e,
+    type: 2}
+  GroundLocatorDelegate: {fileID: 11400000, guid: 2c0897f12da4444949f75eb053e36180,
+    type: 2}
+  RunningDelegate: {fileID: 11400000, guid: 9c0ab16e074104b60880bc43135c1def, type: 2}
+  RightWallLocatorDelegate: {fileID: 11400000, guid: e2acd1870e06f4259935b3d61434b4bb,
+    type: 2}
+  LeftWallLocatorDelegate: {fileID: 11400000, guid: 4f4296f9431d4471a99c2659853c4efa,
     type: 2}

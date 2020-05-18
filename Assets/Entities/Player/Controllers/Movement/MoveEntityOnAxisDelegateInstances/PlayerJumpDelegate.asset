@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d22088d6d32744b69be4c7e67315a22c, type: 3}
-  m_Name: JumpDelegate
+  m_Script: {fileID: 11500000, guid: 5880a3838a65b46cea6d2072ebc93f88, type: 3}
+  m_Name: PlayerJumpDelegate
   m_EditorClassIdentifier: 
-  JumpSpeedModulator: {fileID: 11400000, guid: b917d23634b154decaf85a1784a98144, type: 2}
+  SpeedModulator: {fileID: 11400000, guid: b917d23634b154decaf85a1784a98144, type: 2}

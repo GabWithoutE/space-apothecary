@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6395870704cf4098919dffadadf0aad, type: 3}
-  m_Name: FallSpeedCurve
+  m_Name: PlayerFallSpeedCurve
   m_EditorClassIdentifier: 
   SecondsToMaxSpeed:
     UseConstant: 1
