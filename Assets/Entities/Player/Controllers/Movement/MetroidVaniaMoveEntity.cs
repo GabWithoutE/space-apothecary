@@ -28,7 +28,6 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
 
     public override void Move(Transform entityTransform, float timeModifier)
     {
-        // isJumping = false;
         SetGroundedState(entityTransform);
         isJumpAvailable = IsGrounded.Value;
 

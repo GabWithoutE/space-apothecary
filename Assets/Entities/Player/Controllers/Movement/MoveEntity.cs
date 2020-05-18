@@ -10,17 +10,17 @@ public class MoveEntity : MonoBehaviour
 {
     public MoveEntityDelegate MoveEntityDelegate;
 
-    private Transform transform;
+    private Transform entityTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform = GetComponent<Transform>();
+        entityTransform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveEntityDelegate.Move(transform, 0);
+        MoveEntityDelegate.Move(entityTransform, 0);
     }
 }
