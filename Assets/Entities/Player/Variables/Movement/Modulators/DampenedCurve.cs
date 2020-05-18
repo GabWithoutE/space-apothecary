@@ -5,13 +5,11 @@ using GameCore.Functions;
 using GameCore.Variables.Primitives;
 using UnityEngine;
 
-[CreateAssetMenu(fileName="XAxisSpeedCurve", menuName="Modulators/XAxisSpeedCurve", order=0)]
-public class XAxisSpeedCurve : FloatModulator
+[CreateAssetMenu(menuName="Modulators/DampenedCurve")]
+public class DampenedCurve : FloatModulator
 {
     public FloatReference SecondsToMaxSpeed;
     public FloatReference MaxSpeed;
-
-    private float TotalTimeRun;
 
     public override float Output(float totalTimeRun)
     {

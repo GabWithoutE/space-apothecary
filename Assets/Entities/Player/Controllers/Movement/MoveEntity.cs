@@ -19,22 +19,8 @@ public class MoveEntity : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        MoveEntityDelegate.Move(transform);
-
-        // Calling get component is expensive, so potentially using the original raycast could be better, or using layers.
-        //     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 100, LayerMask.GetMask("Raycast"));
-        // TODO: Design physics architecture and move this there.z
-        // Debug.DrawRay(transform.position, Vector2.down * 10, Color.red);
-        //
-        // RaycastHit2D hit =
-        //     GameCorePhysics2D.RayCast(
-        //         transform.position,
-        //         Vector2.down,
-        //         10,
-        //         LayerMask.GetMask("Raycast"),
-        //         HitTags
-        //     );
+        MoveEntityDelegate.Move(transform, 0);
     }
 }

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03ffacc28ab34ae6b0e91e99deae447, type: 3}
-  m_Name: HorizontalMovementDelegate
+  m_Script: {fileID: 11500000, guid: 85c74e64826c46a2a84be5a9b9f9bd1f, type: 3}
+  m_Name: IsDefyingGravity
   m_EditorClassIdentifier: 
-  XSpeedModulator: {fileID: 11400000, guid: 2cef9204ccff84b279c0e07da5ffc8d2, type: 2}
-  XDirection: {fileID: 11400000, guid: 085f07cff040144a2b2ab4a1f4a690ff, type: 2}
+  DeveloperDescription: When... Jumping, or launched, etc...
+  Value: 0

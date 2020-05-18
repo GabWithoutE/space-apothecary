@@ -10,14 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c0cfc4b7b354b7981566431b37673f3, type: 3}
-  m_Name: MetroidvaniaMovement
+  m_Name: PlayerMetroidvaniaMovement
   m_EditorClassIdentifier: 
-  IsJumping: {fileID: 0}
-  IsGrounded: {fileID: 0}
+  IsDefyingGravity: {fileID: 0}
+  IsGrounded: {fileID: 11400000, guid: b78dbc33703244a61b3248eb3a33ff45, type: 2}
+  MaxJumpTime:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: e47850fe2f6de4e26a1488b979f082dd, type: 2}
+  JumpSlowdownTime:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 36b33f805849f4bb984991070239bdf9, type: 2}
   XDirection: {fileID: 11400000, guid: 085f07cff040144a2b2ab4a1f4a690ff, type: 2}
   YDirection: {fileID: 11400000, guid: fba01b7645a6b46bf841edfb70719447, type: 2}
+  JumpInputOn: {fileID: 11400000, guid: 9cce60db46a7e4601815ed0bd7e57413, type: 2}
   GravityDelegate: {fileID: 11400000, guid: f3e4c4ad275654219bb1ef36b54b96e6, type: 2}
   HorizontalMovementDelegate: {fileID: 11400000, guid: 543e18262ce4a4f59b0faaaab8afd241,
     type: 2}
+  JumpDelegate: {fileID: 11400000, guid: 50a919bf4c181420bbf638b42352c574, type: 2}
   GroundCollisionDetector: {fileID: 11400000, guid: e276358df78f7459d80e15f308a3aa5e,
     type: 2}

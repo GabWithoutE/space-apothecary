@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77b877dd872a449a18f7992c386b125b, type: 3}
-  m_Name: GravityDelegate
+  m_Script: {fileID: 11500000, guid: c7c81c3b664954bf29fc51eb3f3caad1, type: 3}
+  m_Name: MaxJumpTime
   m_EditorClassIdentifier: 
-  DampenedSpeedCurve: {fileID: 11400000, guid: b79a23d556bef445f9f4028eed1b04cc, type: 2}
-  GroundLocationDetector: {fileID: 11400000, guid: 2c0897f12da4444949f75eb053e36180,
-    type: 2}
+  DeveloperDescription: 
+  Value: 0.25
