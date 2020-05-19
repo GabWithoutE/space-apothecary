@@ -22,14 +22,14 @@ namespace GameCore.Collision
                 return hit;
 
             // If not hitTags are specified, then just return anything that is hit.
-            if (hitTags == null ^ hitTags.Count == 0)
+            if (hitTags == null || hitTags.Count == 0)
                 return hit;
 
             // Basically try to prevent getting to here if not needed, because this is expensive.
             TagsComponent tagsComponent = hit.transform.GetComponent<TagsComponent>();
 
             // If there is no tag component in the hit, then return an empty RaycastHit2D
-            if (!tagsComponent ^ tagsComponent.Tags.Count == 0)
+            if (!tagsComponent || tagsComponent.Tags.Count == 0)
                 return new RaycastHit2D();
 
             // If there tag matches in the hit, then return an empty RaycastHit2D

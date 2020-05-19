@@ -30,9 +30,9 @@ public class MoveEntityOnAxisDelegate : ScriptableObject
 
     private bool DirectionNormalAlongAxis(Vector2 direction)
     {
-        return direction == Vector2.down ^
-               direction == Vector2.left ^
-               direction == Vector2.right ^
+        return direction == Vector2.down ||
+               direction == Vector2.left ||
+               direction == Vector2.right ||
                direction == Vector2.up;
     }
 

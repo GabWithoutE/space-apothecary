@@ -30,18 +30,18 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
     private float uninteruptedFallTime = 0;
     private float uninteruptedJumptime = 0;
     private bool isJumpAvailable = false;
-    private bool isJumping;
+    private bool isJumping = false;
 
     public override void Move(Transform entityTransform, float timeModifier)
     {
         SetGroundedState(entityTransform);
         isJumpAvailable = IsGrounded.Value;
 
-        if (JumpInputOn.Value && isJumpAvailable)
+         if (JumpInputOn.Value && isJumpAvailable)
         {
             isJumping = true;
             isJumpAvailable = false;
-        } else if (!JumpInputOn.Value ^ uninteruptedJumptime > MaxJumpTime.Value + JumpSlowdownTime.Value)
+        } else if (!JumpInputOn.Value || uninteruptedJumptime > MaxJumpTime.Value + JumpSlowdownTime.Value)
         {
             isJumping = false;
         }
