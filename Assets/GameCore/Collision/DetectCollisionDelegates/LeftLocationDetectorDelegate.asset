@@ -23,5 +23,6 @@ MonoBehaviour:
   - OriginPosition: {x: -5, y: 9.9}
     Direction: {x: -1, y: 0}
     Distance: 100
-  CollisionTags: []
+  CollisionTags:
+  - {fileID: 11400000, guid: ce7bd9c3b9e3641c4a47ebc92b859059, type: 2}
   CollisionEvent: {fileID: 0}

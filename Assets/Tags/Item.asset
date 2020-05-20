@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1dbb30bfd5ee4bd29526717677f0752, type: 3}
-  m_Name: CeilingHitDetectorDelegate
+  m_Script: {fileID: 11500000, guid: 426fc6e8af8d84844b229dea6987e9f2, type: 3}
+  m_Name: Item
   m_EditorClassIdentifier: 
-  Description: 
-  CollisionDetectionRays: []
-  CollisionTags:
-  - {fileID: 11400000, guid: ce7bd9c3b9e3641c4a47ebc92b859059, type: 2}
-  CollisionEvent: {fileID: 0}
