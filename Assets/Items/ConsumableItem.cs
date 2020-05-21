@@ -27,7 +27,7 @@ public abstract class ConsumableItem : Item
 
     public override void GetPickedUp(Transform pickerUpper)
     {
-        pickerUpper.GetComponent<PlayerInventoryReferences>().ConsumableItemRuntimeSet.Add(this);
+        pickerUpper.GetComponent<PlayerInventoryReferences>().ConsumableItemRuntimeSet.Add(new ConsumableItemReference(this));
     }
 
     // Consumes the item, and applies the consumption to the object that is consuming it

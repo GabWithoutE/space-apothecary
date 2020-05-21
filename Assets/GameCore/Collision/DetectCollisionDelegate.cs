@@ -60,7 +60,7 @@ namespace GameCore.Collision
          {
             RayPackage2D ray = CollisionDetectionRays[i];
 
-            // TODO: Use layers instead of tags?
+            // TODO: Use layers instead of tags? or use RayCast all?
             RaycastHit2D hit = GameCorePhysics2D.RayCast(
                (Vector2) casterTransform.position + ray.OriginPosition,
                ray.Direction,

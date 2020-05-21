@@ -1,15 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace GabriellChen.SpaceApothecary.Events
 {
-    public class GameEventListener : MonoBehaviour
+    public abstract class SelfRegisteringGameEventListener : ScriptableObject, IGameEventListener
     {
-        [Tooltip("Event to register with.")]
         public GameEvent Event;
-
-        [Tooltip("Response to invoke when Event is raised.")]
-        public UnityEvent Response;
 
         private void OnEnable()
         {
@@ -21,9 +17,6 @@ namespace GabriellChen.SpaceApothecary.Events
             Event.UnregisterListener(this);
         }
 
-        public void OnEventRaised()
-        {
-            Response.Invoke();
-        }
+        public abstract void OnEventRaised();
     }
 }

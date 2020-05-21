@@ -7,8 +7,8 @@ namespace GabriellChen.SpaceApothecary.Events
     [CreateAssetMenu]
     public class GameEvent : ScriptableObject
     {
-        private readonly List<GameEventListener> eventListeners =
-            new List<GameEventListener>();
+        private readonly List<IGameEventListener> eventListeners =
+            new List<IGameEventListener>();
 
         public void Raise()
         {
@@ -16,13 +16,13 @@ namespace GabriellChen.SpaceApothecary.Events
                 eventListeners[i].OnEventRaised();
         }
 
-        public void RegisterListener(GameEventListener listener)
+        public void RegisterListener(IGameEventListener listener)
         {
             if (!eventListeners.Contains(listener))
                 eventListeners.Add(listener);
         }
 
-        public void UnregisterListener(GameEventListener listener)
+        public void UnregisterListener(IGameEventListener listener)
         {
             if (eventListeners.Contains(listener))
                 eventListeners.Remove(listener);

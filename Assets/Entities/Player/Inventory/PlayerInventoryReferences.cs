@@ -2,5 +2,5 @@
 
 public class PlayerInventoryReferences : MonoBehaviour
 {
-   public ConsumableItemRuntimeSet ConsumableItemRuntimeSet;
+   public ConsumableInventory ConsumableItemRuntimeSet;
 }
