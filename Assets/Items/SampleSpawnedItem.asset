@@ -17,3 +17,5 @@ MonoBehaviour:
   Size: {x: 10, y: 10, z: 1}
   Sprite: {fileID: 21300000, guid: 40dafe58b21da409594e2bc3b2eca258, type: 3}
   CollisionDelegate: {fileID: 11400000, guid: 2a6c1fb4f3a29493983f5ceb992d0289, type: 2}
+  ItemMovementDelegate: {fileID: 11400000, guid: ca49379388cb1401c9adeeff6482fe9e,
+    type: 2}

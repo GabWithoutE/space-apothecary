@@ -23,6 +23,8 @@ public abstract class ConsumableItem : Item
         GetPickedUpByPlayerComponent mainComponent = item.AddComponent<GetPickedUpByPlayerComponent>();
         mainComponent.Item = this;
 
+        MoveEntity moveEntityBehaviour = item.AddComponent<MoveEntity>();
+        moveEntityBehaviour.MoveEntityDelegate = ItemMovementDelegate;
     }
 
     public override void GetPickedUp(Transform pickerUpper)

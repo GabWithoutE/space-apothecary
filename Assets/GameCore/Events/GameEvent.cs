@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GabriellChen.SpaceApothecary.Events
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Game Event")]
     public class GameEvent : ScriptableObject
     {
         private readonly List<IGameEventListener> eventListeners =

@@ -13,6 +13,8 @@ public abstract class Item : ScriptableObject
     public Sprite Sprite;
     public DetectCollisionDelegate CollisionDelegate;
 
+    public MoveEntityDelegate ItemMovementDelegate;
+
     // Spawns the item...
     public abstract void Spawn(Transform spawnLocation);
 
