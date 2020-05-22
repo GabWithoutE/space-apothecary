@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Items.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DisplayItems : MonoBehaviour
 {
-    public ConsumableInventory ConsumableItemInventory;
+    public CraftingInventory craftingInventory;
 
     private Image[] _slotImages;
 
@@ -17,9 +18,15 @@ public class DisplayItems : MonoBehaviour
 
     public void DisplayConsumableItems()
     {
-        for (int i = 0; i < ConsumableItemInventory.Items.Count; i++)
+        for (int i = 0; i < _slotImages.Length; i++)
         {
-            _slotImages[i].sprite = ConsumableItemInventory.Items[i].Item.Sprite;
+            if (i < craftingInventory.Items.Count)
+            {
+                _slotImages[i].sprite = craftingInventory.Items[i].Item.Sprite;
+                continue;
+            }
+
+            _slotImages[i].sprite = null;
         }
     }
 

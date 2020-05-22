@@ -4,7 +4,7 @@ using GabriellChen.SpaceApothecary.Events;
 using GameCore.Variables.Primitives;
 using UnityEngine;
 
-public class UIManagementComponent : MonoBehaviour
+public class UIVisibilityManagementComponent : MonoBehaviour
 {
     private CanvasGroup _canvasGroup;
 

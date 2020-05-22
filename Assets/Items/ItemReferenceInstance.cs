@@ -1,6 +1,5 @@
 using System;
-using System.Runtime.Serialization;
-using UnityEngine;
+using Items.CraftingItems;
 
 public abstract class ItemReference<T>
 {
@@ -11,6 +10,15 @@ public abstract class ItemReference<T>
 public class ConsumableItemReference : ItemReference<ConsumableItem>
 {
     public ConsumableItemReference(ConsumableItem item)
+    {
+        Item = item;
+    }
+}
+
+[Serializable]
+public class CraftingItemReference : ItemReference<CraftingItem>
+{
+    public CraftingItemReference(CraftingItem item)
     {
         Item = item;
     }

@@ -13,9 +13,10 @@ public abstract class ConsumableItem : Item
         item.transform.position = spawnLocation.position;
         item.transform.localScale = Size;
 
-        BoxCollider2D collider = item.AddComponent<BoxCollider2D>();
-        // TODO: something about this offsetting issue...
-        collider.offset = new Vector2(0, .5f);
+        // BoxCollider2D collider = item.AddComponent<BoxCollider2D>();
+        // // TODO: something about this offsetting issue...
+        // collider.offset = new Vector2(0, .5f);
+        // collider.size = new Vector2(0.99f, 0.99f);
 
         SpriteRenderer spriteRenderer = item.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = Sprite;

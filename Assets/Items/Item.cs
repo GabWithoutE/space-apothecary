@@ -10,6 +10,7 @@ public abstract class Item : ScriptableObject
 {
     public GameObject emptyGameObject;
     public Vector3 Size;
+    public Vector3 RelativeSpawnPosition;
     public Sprite Sprite;
     public DetectCollisionDelegate CollisionDelegate;
 

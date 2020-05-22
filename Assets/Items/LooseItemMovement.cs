@@ -8,8 +8,10 @@ public class LooseItemMovement : MoveEntityDelegate
 {
     public MoveEntityOnAxisDelegate GravityMovementDelegate;
     public DetectCollisionDelegate GroundLocationDelegate;
+    public DetectCollisionDelegate OnGroundDetectionDelegate;
     public override void Move(Transform entityTransform, float timeModifier)
     {
-        GravityMovementDelegate.Move(entityTransform, 0.1f, GroundLocationDelegate, Vector2.down);
+        float time = 0.1f;
+        GravityMovementDelegate.Move(entityTransform, time, GroundLocationDelegate, Vector2.down);
     }
 }

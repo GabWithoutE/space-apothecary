@@ -16,3 +16,5 @@ MonoBehaviour:
     type: 2}
   GroundLocationDelegate: {fileID: 11400000, guid: 2c0897f12da4444949f75eb053e36180,
     type: 2}
+  OnGroundDetectionDelegate: {fileID: 11400000, guid: e276358df78f7459d80e15f308a3aa5e,
+    type: 2}

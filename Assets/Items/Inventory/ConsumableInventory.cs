@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Permissions;
-using GabriellChen.SpaceApothecary.Events;
+﻿using GabriellChen.SpaceApothecary.Events;
 using GameCore.Sets;
 using UnityEngine;
 
