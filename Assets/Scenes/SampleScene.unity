@@ -2302,7 +2302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Consumable Item Inventory
+  m_Text: Crafting Item Inventory
 --- !u!222 &847226424
 CanvasRenderer:
   m_ObjectHideFlags: 0
