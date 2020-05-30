@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using GameCore.Variables.Primitives;
+using GameCore.Variables.Unity;
 using UnityEngine;
 
 public class UpdatePlayerPosition : MonoBehaviour
 {
-    public FloatVariable playerXPosition;
-    public FloatVariable playerYPosition;
+    public Vector3Variable playerPosition;
 
     void Update()
     {
-        var position = transform.position;
-        playerXPosition.SetValue(position.x);
-        playerYPosition.SetValue(position.y);
+        playerPosition.SetValue(transform.position);
     }
 
 }

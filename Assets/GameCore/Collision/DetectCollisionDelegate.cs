@@ -22,28 +22,28 @@ namespace GameCore.Collision
       public List<TagObject> CollisionTags = new List<TagObject>();
 
       // Event for sending that collision has been detected.
+      private bool useEvent;
       public GameEvent CollisionEvent;
 
-      private bool useEvent;
 
       private void OnEnable()
       {
          useEvent = CollisionEvent != null;
       }
 
-      public RaycastHit2D DetectCollisionRaycast(Transform casterTransform)
+      public RaycastHit2D DetectCollisionRaycast(Transform casterTransform, bool flipDirection)
       {
-         RaycastHit2D hit = CastRays(casterTransform);
+         RaycastHit2D hit = CastRays(casterTransform, flipDirection);
 
          if (useEvent &&  GameCorePhysics2D.HasHit(hit))
             CollisionEvent.Raise();
 
-         return CastRays(casterTransform);
+         return hit;
       }
 
-      public bool IsColliding(Transform casterTransform)
+      public bool IsColliding(Transform casterTransform, bool flipDirection)
       {
-         bool hit = GameCorePhysics2D.HasHit(CastRays(casterTransform));
+         bool hit = GameCorePhysics2D.HasHit(CastRays(casterTransform, flipDirection));
 
          if (useEvent && hit)
             CollisionEvent.Raise();
@@ -51,16 +51,19 @@ namespace GameCore.Collision
          return hit;
       }
 
-      private RaycastHit2D CastRays(Transform casterTransform)
+      private RaycastHit2D CastRays(Transform casterTransform, bool flipDirection)
       {
          float nearestHitDistance = Mathf.Infinity;
          RaycastHit2D outputHit = new RaycastHit2D();
 
          for (int i = 0; i < CollisionDetectionRays.Count; i++)
          {
-            RayPackage2D ray = CollisionDetectionRays[i];
+            RayPackage2D ray;
+            if (flipDirection)
+               ray = CollisionDetectionRays[i].FlipAcrossDirectionAxis();
+            else
+               ray = CollisionDetectionRays[i];
 
-            // TODO: Use layers instead of tags? or use RayCast all?
             RaycastHit2D hit = GameCorePhysics2D.RayCast(
                (Vector2) casterTransform.position + ray.OriginPosition,
                ray.Direction,
@@ -68,6 +71,8 @@ namespace GameCore.Collision
                LayerMask.GetMask("Raycast"),
                CollisionTags
             );
+
+            // TODO: Use layers instead of tags? or use RayCast all?
 
 #if UNITY_EDITOR
             Debug.DrawRay(

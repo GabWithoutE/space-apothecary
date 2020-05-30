@@ -19,7 +19,7 @@ public class MoveEntity : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         MoveEntityDelegate.Move(entityTransform, 0);
     }

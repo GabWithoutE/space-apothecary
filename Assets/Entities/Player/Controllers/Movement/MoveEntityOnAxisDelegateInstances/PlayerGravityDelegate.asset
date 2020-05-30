@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: PlayerGravityDelegate
   m_EditorClassIdentifier: 
   SpeedModulator: {fileID: 11400000, guid: b79a23d556bef445f9f4028eed1b04cc, type: 2}
+  obstacleDetector: {fileID: 11400000, guid: 2c0897f12da4444949f75eb053e36180, type: 2}
+  directionNormalAlongAxis: {x: 0, y: -1}

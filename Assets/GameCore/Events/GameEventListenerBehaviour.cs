@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace GabriellChen.SpaceApothecary.Events
 {
-    public class GameEventListenerBehaviour : MonoBehaviour, IGameEventListener
+    public class GameEventListenerBehaviour : MonoBehaviour
     {
         [Tooltip("Event to register with.")]
         public GameEvent Event;
@@ -11,18 +11,17 @@ namespace GabriellChen.SpaceApothecary.Events
         [Tooltip("Response to invoke when Event is raised.")]
         public UnityEvent Response;
 
-        private void OnEnable()
+        private void Start()
         {
-            Event.RegisterListener(this);
+            Event.RegisterListener(GameEventResponse);
         }
 
         private void OnDisable()
         {
-            Event.UnregisterListener(this);
+            Event.UnregisterListener(GameEventResponse);
         }
 
-
-        public void OnEventRaised()
+        private void GameEventResponse()
         {
             Response.Invoke();
         }

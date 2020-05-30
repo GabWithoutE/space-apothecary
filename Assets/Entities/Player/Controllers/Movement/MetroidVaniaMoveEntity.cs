@@ -1,87 +1,93 @@
+using System.IO.IsolatedStorage;
+using GabriellChen.SpaceApothecary.Events;
 using GameCore.Collision;
 using GameCore.Variables.Primitives;
+using GameCore.Variables.Unity;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Movement/MetroidVaniaMoveEntity")]
 public class MetroidVaniaMoveEntity : MoveEntityDelegate
 {
-    public BoolVariable IsDefyingGravity;
-    public BoolVariable IsGrounded;
-    public FloatReference MaxJumpTime;
-    public FloatReference JumpSlowdownTime;
+    public GameEvent groundedEvent;
+    public BoolVariable grounded;
+    public BoolVariable attacking;
 
     public IntVariable XDirection;
     public IntVariable YDirection;
-    public BoolVariable JumpInputOn;
+    public BoolVariable jumpInstruction;
 
-    public MoveEntityOnAxisDelegate JumpDelegate;
-    public DetectCollisionDelegate CeilingCollisionDelegate;
-    public DetectCollisionDelegate CeilingLocatorDelegate;
+    public MoveEntityOnAxisDelegate jumpDelegate;
 
-    public MoveEntityOnAxisDelegate GravityDelegate;
-    public DetectCollisionDelegate GroundCollisionDetector;
-    public DetectCollisionDelegate GroundLocatorDelegate;
+    public MoveEntityOnAxisDelegate gravityDelegate;
+    public DetectCollisionDelegate groundCollisionDetector;
 
     public MoveEntityOnAxisDelegate RunningDelegate;
-    public DetectCollisionDelegate RightWallLocatorDelegate;
-    public DetectCollisionDelegate LeftWallLocatorDelegate;
+    public MoveEntityOnAxisDelegate PrimaryAttackMovementDelegate;
+    public Vector3Reference primaryAttackDirection;
 
     private float uninteruptedRunTime = 0;
     private float uninteruptedFallTime = 0;
-    private float uninteruptedJumptime = 0;
-    private bool isJumpAvailable = false;
-    private bool isJumping = false;
+    private float _uninteruptedJumptime = 0;
+    private float _currentAttackFrame = 0;
 
     public override void Move(Transform entityTransform, float timeModifier)
     {
         SetGroundedState(entityTransform);
-        isJumpAvailable = IsGrounded.Value;
-
-         if (JumpInputOn.Value && isJumpAvailable)
-        {
-            isJumping = true;
-            isJumpAvailable = false;
-        } else if (!JumpInputOn.Value || uninteruptedJumptime > MaxJumpTime.Value + JumpSlowdownTime.Value)
-        {
-            isJumping = false;
-        }
 
         ComputeTimeModifiers();
 
-        if (!isJumping)
-            GravityDelegate.Move(entityTransform, uninteruptedFallTime, GroundLocatorDelegate, Vector2.down);
+        if (!jumpInstruction.Value)
+            gravityDelegate.Move(entityTransform, uninteruptedFallTime, false);
         else
-            JumpDelegate.Move(entityTransform, uninteruptedJumptime, CeilingLocatorDelegate,Vector2.up);
+            jumpDelegate.Move(entityTransform, _uninteruptedJumptime, false);
 
         if (XDirection.Value != 0)
-            RunningDelegate.Move(
+            RunningDelegate.Move(entityTransform, uninteruptedRunTime, XDirection.Value == -1);
+
+        if (grounded.Value && attacking.Value)
+        {
+            Debug.Log((Vector2)primaryAttackDirection.Value);
+
+            // do the movement for attacking
+            PrimaryAttackMovementDelegate.Move(
                 entityTransform,
-                uninteruptedRunTime,
-                XDirection.Value == 1 ? RightWallLocatorDelegate : LeftWallLocatorDelegate,
-                new Vector2(XDirection.Value, 0)
-            );
+                _currentAttackFrame,
+                primaryAttackDirection.Value.x < 0
+                );
+        }
     }
 
     private void ComputeTimeModifiers()
     {
         if (XDirection.Value != 0)
-            uninteruptedRunTime += Time.fixedDeltaTime;
+            uninteruptedRunTime += Time.deltaTime;
         else
             uninteruptedRunTime = 0;
 
-        if (!IsGrounded.Value && !isJumping)
-            uninteruptedFallTime += Time.fixedDeltaTime;
+        if (!grounded.Value && !jumpInstruction.Value)
+            uninteruptedFallTime += Time.deltaTime;
         else
             uninteruptedFallTime = 0;
 
-        if (isJumping)
-            uninteruptedJumptime += Time.fixedDeltaTime;
+        if (jumpInstruction.Value)
+            _uninteruptedJumptime += Time.deltaTime;
         else
-            uninteruptedJumptime = 0;
+            _uninteruptedJumptime = 0;
+
+        if (attacking.Value)
+            _currentAttackFrame++;
+        else
+            _currentAttackFrame = 0;
     }
 
     private void SetGroundedState(Transform entityTransform)
     {
-        IsGrounded.SetValue(GroundCollisionDetector.IsColliding(entityTransform));
+        bool collidingWithGround = groundCollisionDetector.IsColliding(entityTransform, false);
+        grounded.SetValue(groundCollisionDetector.IsColliding(entityTransform, false));
+
+        if (collidingWithGround)
+        {
+            groundedEvent.Raise();
+        }
     }
 }

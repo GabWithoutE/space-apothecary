@@ -10,8 +10,10 @@ using UnityEngine;
 public class MoveEntityOnAxisDelegate : ScriptableObject
 {
     public FloatModulator SpeedModulator;
+    public DetectCollisionDelegate obstacleDetector;
+    public Vector2 directionNormalAlongAxis;
 
-    public void Move(Transform entityTransform, float timeSpentMovingInDirection, DetectCollisionDelegate obstacleDetector, Vector2 directionNormalAlongAxis)
+    public void Move(Transform entityTransform, float timeSpentMovingInDirection, bool flipDirectionNormalAlongAxis)
     {
         if (!DirectionNormalAlongAxis(directionNormalAlongAxis))
         {
@@ -19,13 +21,14 @@ public class MoveEntityOnAxisDelegate : ScriptableObject
         }
 
         float speed = SpeedModulator.Output(timeSpentMovingInDirection);
+        Vector2 movementDirection = flipDirectionNormalAlongAxis ? directionNormalAlongAxis * -1 : directionNormalAlongAxis;
 
         // Used to make sure the collisions in direction of movement are accurate (ex. won't move through obstacles).
-        RaycastHit2D obstacleHit = obstacleDetector.DetectCollisionRaycast(entityTransform);
+        RaycastHit2D obstacleHit = obstacleDetector.DetectCollisionRaycast(entityTransform, flipDirectionNormalAlongAxis);
         if (GameCorePhysics2D.HasHit(obstacleHit) && obstacleHit.distance < speed)
-            entityTransform.position += (Vector3) directionNormalAlongAxis * obstacleHit.distance;
+            entityTransform.position += (Vector3) movementDirection * obstacleHit.distance;
         else
-            entityTransform.position += (Vector3) directionNormalAlongAxis * speed;
+            entityTransform.position += (Vector3) movementDirection * speed;
     }
 
     private bool DirectionNormalAlongAxis(Vector2 direction)
@@ -36,6 +39,5 @@ public class MoveEntityOnAxisDelegate : ScriptableObject
                direction == Vector2.up;
     }
 
-
-
 }
+

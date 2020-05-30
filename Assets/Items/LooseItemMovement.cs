@@ -7,11 +7,9 @@ using UnityEngine;
 public class LooseItemMovement : MoveEntityDelegate
 {
     public MoveEntityOnAxisDelegate GravityMovementDelegate;
-    public DetectCollisionDelegate GroundLocationDelegate;
-    public DetectCollisionDelegate OnGroundDetectionDelegate;
     public override void Move(Transform entityTransform, float timeModifier)
     {
         float time = 0.1f;
-        GravityMovementDelegate.Move(entityTransform, time, GroundLocationDelegate, Vector2.down);
+        GravityMovementDelegate.Move(entityTransform, time, false);
     }
 }

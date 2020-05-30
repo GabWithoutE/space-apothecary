@@ -8,7 +8,7 @@ public class GetPickedUpByPlayerComponent : MonoBehaviour
 
     void FixedUpdate()
     {
-        RaycastHit2D hit = Item.CollisionDelegate.DetectCollisionRaycast(transform);
+        RaycastHit2D hit = Item.CollisionDelegate.DetectCollisionRaycast(transform, false);
         if (GameCorePhysics2D.HasHit(hit))
         {
             Item.GetPickedUp(hit.transform);

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: PlayerJumpDelegate
   m_EditorClassIdentifier: 
   SpeedModulator: {fileID: 11400000, guid: b917d23634b154decaf85a1784a98144, type: 2}
+  obstacleDetector: {fileID: 11400000, guid: 9d613bd8ae4f74baf8a90cc1ffc24b19, type: 2}
+  directionNormalAlongAxis: {x: 0, y: 1}

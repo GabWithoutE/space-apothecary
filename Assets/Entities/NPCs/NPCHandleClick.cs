@@ -1,12 +1,12 @@
 ﻿using GabriellChen.SpaceApothecary.Events;
 using GameCore.Variables.Primitives;
+using GameCore.Variables.Unity;
 using UnityEngine;
 
 public class NPCHandleClick : MonoBehaviour, IClickable
 {
     public float rangeDistance;
-    public FloatVariable playerXPosition;
-    public FloatVariable playerYPosition;
+    public Vector3Reference playerPositionReference;
     public GameEvent npcLeftClicked;
     public GameEvent npcRightClicked;
 
@@ -15,9 +15,9 @@ public class NPCHandleClick : MonoBehaviour, IClickable
     // Update is called once per frame
     void Update()
     {
-        Vector2 juiceMachinePosition = (Vector2) transform.position;
+        Vector2 juiceMachinePosition = transform.position;
         float distance =
-            Vector2.Distance(juiceMachinePosition, new Vector2(playerXPosition.Value, playerYPosition.Value));
+            Vector2.Distance(juiceMachinePosition, playerPositionReference.Value);
         _isClickable = distance < rangeDistance;
     }
 
