@@ -45,6 +45,7 @@ namespace ControlInterpretationLayer
                 primaryAbilityBuffer.BlockExecution(numberOfFramesForAbility);
                 primaryAbilityBuffer.ExecuteBufferOnCondition(state => state.state == 1);
 
+                // Here if hit an npc, don't do primary ability
                 Vector2 playerToMouseVector =
                     Input.mousePosition -
                     cameraVariable.Value.WorldToScreenPoint(playerPosition.Value);

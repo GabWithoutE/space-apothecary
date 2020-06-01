@@ -19,10 +19,7 @@ namespace ControlInterpretationLayer {
 
         private float _uninteruptedJumptime = 0;
 
-        public override void Initialize()
-        {
-            // groundedEvent.RegisterListener(ReactToGrounded);
-        }
+        public override void Initialize() { }
 
         public override void Update()
         {
@@ -53,7 +50,7 @@ namespace ControlInterpretationLayer {
         {
             if (jumpAvailable.Value && jumpBuffer.IsBufferedInputAvailable(state => state.state > 0))
             {
-                _uninteruptedJumptime += Time.deltaTime;
+                _uninteruptedJumptime += Time.fixedDeltaTime;
                 jumpInstruction.SetValue(true);
                 jumpBuffer.ExecuteBufferOnCondition(state => state.state > 0);
                 return;

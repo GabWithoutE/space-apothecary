@@ -3290,8 +3290,7 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: dbdfb73a2ddda43419e4169ef5302c72, type: 2}
   cameraVariable: {fileID: 11400000, guid: b00ad26d84889449cac4e2821ba78271, type: 2}
   usePrimaryAbility: {fileID: 11400000, guid: 001c9a7ccbed144a5b299e45a3e1cc58, type: 2}
-  useSecondaryAbility: {fileID: 11400000, guid: a9cd186f485504f24ab7a7e4c229ddd4,
-    type: 2}
+  useSecondaryAbility: {fileID: 0}
   useTertiaryAbility: {fileID: 11400000, guid: 6f7dd9d6f6d8b4e8892b30d4e0c8cbc3, type: 2}
   interactWithNPC: {fileID: 0}
 --- !u!114 &1133182265
@@ -3341,6 +3340,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 093eb04e66bbd4802a7d98d3072e10af, type: 2}
   - {fileID: 11400000, guid: a0f3bd26b925c45bd8b82c1718340620, type: 2}
   - {fileID: 11400000, guid: ad49379ed6a54492695d41fefc5b79d1, type: 2}
+  - {fileID: 11400000, guid: 1b96b9e9dd04e49afb7b2858bf2285b5, type: 2}
 --- !u!114 &1133182267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3353,10 +3353,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7742a75d934975a366479cecb96b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bufferExecutors:
+  timeBasedBufferExecutors:
   - {fileID: 11400000, guid: d2b9b6254029f40ba8d05ec42998f6b5, type: 2}
-  - {fileID: 11400000, guid: 0c780ada5ec9e48749e4f2a36d65c550, type: 2}
   - {fileID: 11400000, guid: aac25348b9eda46b4b574c4be08cf034, type: 2}
+  frameBasedBufferExecutors:
+  - {fileID: 11400000, guid: 0c780ada5ec9e48749e4f2a36d65c550, type: 2}
+  - {fileID: 11400000, guid: 7f7392b37563b4bb596bcdb6eaaa6410, type: 2}
 --- !u!1 &1208955802
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,8 +4718,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067302252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2057, y: -133.9, z: 1}
-  m_LocalScale: {x: 1000, y: 100, z: 1}
+  m_LocalPosition: {x: 7.2057, y: -253.6, z: 1}
+  m_LocalScale: {x: 10000, y: 100, z: 1}
   m_Children:
   - {fileID: 1065307260}
   m_Father: {fileID: 0}

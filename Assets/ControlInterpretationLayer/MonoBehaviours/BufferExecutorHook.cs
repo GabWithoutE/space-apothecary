@@ -8,7 +8,8 @@ namespace ControlInterpretationLayer.MonoBehaviours
     // Monobehaviour for BufferExecutors to hook into Unity Engine
     public class BufferExecutorHook : MonoBehaviour
     {
-        public List<BufferExecutor> bufferExecutors = new List<BufferExecutor>();
+        public List<BufferExecutor> timeBasedBufferExecutors = new List<BufferExecutor>();
+        public List<BufferExecutor> frameBasedBufferExecutors = new List<BufferExecutor>();
         // public IBufferExecutor jumpBuffer;
         // public IBufferExecutor attackBuffer;
         // public IBufferExecutor rightBuffer;
@@ -19,15 +20,24 @@ namespace ControlInterpretationLayer.MonoBehaviours
 
         void Start()
         {
-            foreach (BufferExecutor executor in bufferExecutors)
-            {
+            foreach (BufferExecutor executor in timeBasedBufferExecutors)
                 executor.Initialize();
+
+            foreach (BufferExecutor executor in frameBasedBufferExecutors)
+                executor.Initialize();
+        }
+
+        void FixedUpdate()
+        {
+            foreach (BufferExecutor executor in timeBasedBufferExecutors)
+            {
+                executor.Update();
             }
         }
 
         void Update()
         {
-            foreach (BufferExecutor executor in bufferExecutors)
+            foreach (BufferExecutor executor in frameBasedBufferExecutors)
             {
                 executor.Update();
             }

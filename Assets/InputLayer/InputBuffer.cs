@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameCore.Variables.Unity;
-using UnityEditor.Experimental;
 using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.XR.WSA.Input;
 
 namespace InputLayer
 {

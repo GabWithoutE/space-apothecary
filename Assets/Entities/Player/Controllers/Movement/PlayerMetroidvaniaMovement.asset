@@ -15,6 +15,7 @@ MonoBehaviour:
   groundedEvent: {fileID: 11400000, guid: 7d35f119b89c74e23a960ad79837f059, type: 2}
   grounded: {fileID: 11400000, guid: b78dbc33703244a61b3248eb3a33ff45, type: 2}
   attacking: {fileID: 11400000, guid: 001c9a7ccbed144a5b299e45a3e1cc58, type: 2}
+  dashing: {fileID: 11400000, guid: 5bdebb6dcf3314f56b8865b0fda25637, type: 2}
   XDirection: {fileID: 11400000, guid: 085f07cff040144a2b2ab4a1f4a690ff, type: 2}
   YDirection: {fileID: 11400000, guid: fba01b7645a6b46bf841edfb70719447, type: 2}
   jumpInstruction: {fileID: 11400000, guid: 7ea002b71086d4e3b96683d82cdaab6e, type: 2}
@@ -29,3 +30,5 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: {x: 0, y: 0, z: 0}
     Variable: {fileID: 11400000, guid: 37f34355bf5804389bdff4387a5016da, type: 2}
+  dashMovementDelegate: {fileID: 11400000, guid: 080d9c00c19f74b389b52171967077d1,
+    type: 2}

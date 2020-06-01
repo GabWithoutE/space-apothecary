@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c74e64826c46a2a84be5a9b9f9bd1f, type: 3}
-  m_Name: SecondaryAttack
+  m_Script: {fileID: 11500000, guid: b0a16a91006a4b72ac8a47970bab631e, type: 3}
+  m_Name: DashDirection
   m_EditorClassIdentifier: 
-  Value: 0
+  Value: {x: 0, y: 0, z: 0}

@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c81c3b664954bf29fc51eb3f3caad1, type: 3}
   m_Name: XAxisMovementSpeed
   m_EditorClassIdentifier: 
-  DeveloperDescription: 'The rate that the player can move from left to right
-
-'
-  Value: 5
+  Value: 3
