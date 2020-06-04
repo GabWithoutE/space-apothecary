@@ -10,8 +10,6 @@ namespace ControlInterpretationLayer
     public class SecondaryAbilityBufferExecutor : InputInterpreter
     {
         public InputBuffer secondaryAbilityBuffer;
-        public InputBuffer leftBuffer;
-        public InputBuffer rightBuffer;
 
         public BoolVariable dashing;
         public BoolReference grounded;
@@ -47,9 +45,6 @@ namespace ControlInterpretationLayer
             {
                 secondaryAbilityBuffer.BlockExecution(blockingTime);
                 secondaryAbilityBuffer.ExecuteBufferOnCondition(state => state.state == 1);
-
-                rightBuffer.BlockExecution(blockingTime);
-                leftBuffer.BlockExecution(blockingTime);
 
                 dashing.SetValue(true);
 
