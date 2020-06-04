@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using GameCore.Variables.Primitives;
-using GameCore.Variables.Unity;
+﻿using GameCore.Variables.Unity;
 using UnityEngine;
 
-public class UpdatePlayerPosition : MonoBehaviour
+namespace Entities.Player.Controllers.Movement.PlayerState
 {
-    public Vector3Variable playerPosition;
-
-    void Update()
+    public class UpdatePlayerPosition : MonoBehaviour
     {
-        playerPosition.SetValue(transform.position);
-    }
+        public Vector3Variable playerPosition;
 
+        void FixedUpdate()
+        {
+            playerPosition.SetValue(transform.position);
+        }
+
+    }
 }

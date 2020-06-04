@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5880a3838a65b46cea6d2072ebc93f88, type: 3}
   m_Name: PlayerAttackingMovementDelegate
   m_EditorClassIdentifier: 
-  SpeedModulator: {fileID: 11400000, guid: 129a9c3f2b49a4768ac61bb0a46b1689, type: 2}
+  SpeedModulator: {fileID: 11400000, guid: a200cba6bbfcd4f0ca9277fcd0ca5780, type: 2}
   obstacleDetector: {fileID: 11400000, guid: e2acd1870e06f4259935b3d61434b4bb, type: 2}
   directionNormalAlongAxis: {x: 1, y: 0}

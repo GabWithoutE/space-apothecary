@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ControlInterpretationLayer {
     [CreateAssetMenu(menuName = "BufferExecutor/Jump")]
-    public class JumpBufferExecutor : BufferExecutor
+    public class JumpBufferExecutor : InputInterpreter
     {
         public InputBuffer jumpBuffer;
         public BoolReference grounded;
@@ -23,12 +23,18 @@ namespace ControlInterpretationLayer {
 
         public override void Update()
         {
-            UpdateJumpAvailability();
             UpdateJumpInstruction();
         }
 
+        public override void FixedUpdate()
+        {
+            UpdateJumpAvailability();
+        }
+
+        // TODO: fix bug where you can walk off a platform then jump
         private void UpdateJumpAvailability()
         {
+            _uninteruptedJumptime += Time.fixedDeltaTime;
             bool jumpTimeAvailable = _uninteruptedJumptime < maxJumpTime.Value + jumpSlowdownTime.Value;
             bool releasedJump = jumpBuffer.IsBufferedInputAvailable(state => state.state == -1);
             bool notPressedJump = jumpBuffer.IsBufferedInputAvailable(state => state.state == 0);
@@ -50,7 +56,6 @@ namespace ControlInterpretationLayer {
         {
             if (jumpAvailable.Value && jumpBuffer.IsBufferedInputAvailable(state => state.state > 0))
             {
-                _uninteruptedJumptime += Time.fixedDeltaTime;
                 jumpInstruction.SetValue(true);
                 jumpBuffer.ExecuteBufferOnCondition(state => state.state > 0);
                 return;

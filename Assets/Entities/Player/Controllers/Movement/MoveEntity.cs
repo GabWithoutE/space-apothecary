@@ -23,9 +23,4 @@ public class MoveEntity : MonoBehaviour
     {
         MoveEntityDelegate.FixedMove(entityTransform);
     }
-
-    void Update()
-    {
-        MoveEntityDelegate.Move(entityTransform);
-    }
 }

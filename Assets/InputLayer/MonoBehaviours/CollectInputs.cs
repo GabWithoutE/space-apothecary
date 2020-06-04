@@ -34,10 +34,6 @@ namespace InputLayer.MonoBehaviours
     [Serializable]
     public struct Inputs
     {
-        public KeyCodeKeyControlPair primaryAbility;
-        public KeyCodeKeyControlPair secondaryAbility;
-        public KeyCodeKeyControlPair tertiaryAbility;
-
         public KeyCodeKeyControlPair up;
         public KeyCodeKeyControlPair down;
         public KeyCodeKeyControlPair left;

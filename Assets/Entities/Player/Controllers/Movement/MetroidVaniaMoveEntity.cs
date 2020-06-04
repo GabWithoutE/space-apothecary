@@ -24,7 +24,7 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
     public DetectCollisionDelegate groundCollisionDetector;
 
     public MoveEntityOnAxisDelegate RunningDelegate;
-    public MoveEntityOnAxisDelegate PrimaryAttackMovementDelegate;
+    public MoveEntityOnAxisDelegate primaryAttackMovementDelegate;
     public Vector3Reference primaryAttackDirection;
 
     public DashMovementDelegate dashMovementDelegate;
@@ -32,8 +32,8 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
     private float uninteruptedRunTime = 0;
     private float uninteruptedFallTime = 0;
     private float _uninteruptedJumptime = 0;
-    private int _currentAttackFrame = 0;
-    private int _currentDashFrame = 0;
+    private float _currentAttackTime = 0;
+    private float _currentDashTime = 0;
 
     public override void FixedMove(Transform entityTransform)
     {
@@ -49,35 +49,29 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
                 jumpDelegate.Move(entityTransform, _uninteruptedJumptime, false);
         }
 
-
         if (XDirection.Value != 0)
             RunningDelegate.Move(entityTransform, uninteruptedRunTime, XDirection.Value == -1);
-    }
 
-    public override void Move(Transform entityTransform)
-    {
         if (grounded.Value && attacking.Value && primaryAttackDirection.Value.x != 0)
-        {
             // do the movement for attacking
-            PrimaryAttackMovementDelegate.Move(
+            primaryAttackMovementDelegate.Move(
                 entityTransform,
-                _currentAttackFrame,
+                _currentAttackTime,
                 primaryAttackDirection.Value.x < 0
-                );
-        }
+            );
 
         if (dashing.Value)
-            dashMovementDelegate.Move(entityTransform, _currentDashFrame);
+            dashMovementDelegate.Move(entityTransform, _currentDashTime);
     }
 
     private void ComputeTimeModifiers()
     {
-        if (XDirection.Value != 0)
+        if (XDirection.Value != 0 || dashing.Value)
             uninteruptedRunTime += Time.fixedDeltaTime;
         else
             uninteruptedRunTime = 0;
 
-        if (!grounded.Value && !jumpInstruction.Value)
+        if (!grounded.Value && !jumpInstruction.Value && !dashing.Value)
             uninteruptedFallTime += Time.fixedDeltaTime;
         else
             uninteruptedFallTime = 0;
@@ -88,14 +82,14 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
             _uninteruptedJumptime = 0;
 
         if (attacking.Value)
-            _currentAttackFrame++;
+            _currentAttackTime += Time.fixedDeltaTime;
         else
-            _currentAttackFrame = 0;
+            _currentAttackTime = 0;
 
         if (dashing.Value)
-            _currentDashFrame++;
+            _currentDashTime += Time.fixedDeltaTime;
         else
-            _currentDashFrame = 0;
+            _currentDashTime = 0;
     }
 
     private void SetGroundedState(Transform entityTransform)

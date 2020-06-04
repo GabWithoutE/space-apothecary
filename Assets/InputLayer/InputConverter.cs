@@ -9,11 +9,11 @@ namespace InputLayer
         public static int InputToIntValue(KeyCode key)
         {
             if (Input.GetKeyDown(key))
-                return -1;
-            if (Input.GetKeyUp(key))
                 return 1;
+            if (Input.GetKeyUp(key))
+                return -1;
             if (Input.GetKey(key))
-                return -2;
+                return 2;
             return 0;
         }
 

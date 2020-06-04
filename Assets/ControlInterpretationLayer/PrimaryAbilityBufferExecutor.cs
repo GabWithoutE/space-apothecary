@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ControlInterpretationLayer
 {
     [CreateAssetMenu(menuName = "BufferExecutor/PrimaryAbility")]
-    public class PrimaryAbilityBufferExecutor : BufferExecutor
+    public class PrimaryAbilityBufferExecutor : InputInterpreter
     {
         public InputBuffer primaryAbilityBuffer;
         public InputBuffer rightMovementBuffer;
@@ -15,7 +15,7 @@ namespace ControlInterpretationLayer
 
         public BoolVariable attacking;
         public BoolReference grounded;
-        public IntReference numberOfFramesForAbility;
+        public FloatReference blockingTime;
 
         public Vector3Reference playerPosition;
         public Vector3Variable primaryAbilityDirection;
@@ -37,12 +37,12 @@ namespace ControlInterpretationLayer
                 //     control to take over unimpeded.
                 if (grounded.Value)
                 {
-                    rightMovementBuffer.BlockExecution(numberOfFramesForAbility);
-                    leftMovementBuffer.BlockExecution(numberOfFramesForAbility);
+                    rightMovementBuffer.BlockExecution(blockingTime);
+                    leftMovementBuffer.BlockExecution(blockingTime);
                 }
 
                 // block self for specified number of frames to prevent re-triggering before desired
-                primaryAbilityBuffer.BlockExecution(numberOfFramesForAbility);
+                primaryAbilityBuffer.BlockExecution(blockingTime);
                 primaryAbilityBuffer.ExecuteBufferOnCondition(state => state.state == 1);
 
                 // Here if hit an npc, don't do primary ability
@@ -62,6 +62,8 @@ namespace ControlInterpretationLayer
 
             attacking.SetValue(false);
         }
+
+        public override void FixedUpdate() { }
 
         private RaycastHit2D CastRayFromMouseToWorld()
         {

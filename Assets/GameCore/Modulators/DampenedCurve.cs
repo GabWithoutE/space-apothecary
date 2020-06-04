@@ -11,14 +11,14 @@ public class DampenedCurve : FloatModulator
     public FloatReference SecondsToMaxSpeed;
     public FloatReference MaxSpeed;
 
-    public override float Output(float totalTimeRun)
+    public override float Output(float currentTotalTime)
     {
-        if (totalTimeRun < 0)
+        if (currentTotalTime < 0)
             return 0;
 
-        if (totalTimeRun > SecondsToMaxSpeed)
+        if (currentTotalTime > SecondsToMaxSpeed)
             return MaxSpeed;
 
-        return MaxSpeed.Value * totalTimeRun / SecondsToMaxSpeed;
+        return MaxSpeed.Value * currentTotalTime / SecondsToMaxSpeed;
     }
 }

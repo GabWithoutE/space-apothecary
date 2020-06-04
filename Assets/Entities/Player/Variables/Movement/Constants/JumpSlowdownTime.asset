@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c81c3b664954bf29fc51eb3f3caad1, type: 3}
   m_Name: JumpSlowdownTime
   m_EditorClassIdentifier: 
-  Value: 0.25
+  Value: 0.15

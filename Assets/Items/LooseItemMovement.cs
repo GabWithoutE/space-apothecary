@@ -12,6 +12,4 @@ public class LooseItemMovement : MoveEntityDelegate
         float time = 0.1f;
         GravityMovementDelegate.Move(entityTransform, time, false);
     }
-
-    public override void Move(Transform entityTransform) { }
 }

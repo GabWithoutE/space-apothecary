@@ -24,7 +24,7 @@ MonoBehaviour:
   groundCollisionDetector: {fileID: 11400000, guid: e276358df78f7459d80e15f308a3aa5e,
     type: 2}
   RunningDelegate: {fileID: 11400000, guid: 9c0ab16e074104b60880bc43135c1def, type: 2}
-  PrimaryAttackMovementDelegate: {fileID: 11400000, guid: 009fa8a71dd23456696d2c3b13c90482,
+  primaryAttackMovementDelegate: {fileID: 11400000, guid: 009fa8a71dd23456696d2c3b13c90482,
     type: 2}
   primaryAttackDirection:
     UseConstant: 0

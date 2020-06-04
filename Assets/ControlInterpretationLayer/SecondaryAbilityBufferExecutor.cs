@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ControlInterpretationLayer
 {
     [CreateAssetMenu(menuName = "BufferExecutor/SecondaryAbility")]
-    public class SecondaryAbilityBufferExecutor : BufferExecutor
+    public class SecondaryAbilityBufferExecutor : InputInterpreter
     {
         public InputBuffer secondaryAbilityBuffer;
         public InputBuffer leftBuffer;
@@ -15,7 +15,7 @@ namespace ControlInterpretationLayer
 
         public BoolVariable dashing;
         public BoolReference grounded;
-        public IntReference numberOfFramesForAbility;
+        public FloatReference blockingTime;
 
         public Vector3Reference playerPosition;
         public Vector3Variable secondaryAbilityDirection;
@@ -45,11 +45,11 @@ namespace ControlInterpretationLayer
 
             if (_jumpAvailable && secondaryAbilityBuffer.IsBufferedInputAvailable(state => state.state == 1))
             {
-                secondaryAbilityBuffer.BlockExecution(numberOfFramesForAbility);
+                secondaryAbilityBuffer.BlockExecution(blockingTime);
                 secondaryAbilityBuffer.ExecuteBufferOnCondition(state => state.state == 1);
 
-                rightBuffer.BlockExecution(numberOfFramesForAbility);
-                leftBuffer.BlockExecution(numberOfFramesForAbility);
+                rightBuffer.BlockExecution(blockingTime);
+                leftBuffer.BlockExecution(blockingTime);
 
                 dashing.SetValue(true);
 
@@ -71,6 +71,8 @@ namespace ControlInterpretationLayer
 
             dashing.SetValue(false);
         }
+
+        public override void FixedUpdate() { }
 
         private Vector2 GetPlayerToMouseVector()
         {

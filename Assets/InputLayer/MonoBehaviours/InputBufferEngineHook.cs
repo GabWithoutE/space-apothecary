@@ -17,5 +17,13 @@ namespace InputLayer.MonoBehaviours
                 buffer.UpdateInputBuffer();
             }
         }
+
+        void FixedUpdate()
+        {
+            foreach (InputBuffer buffer in inputBuffers)
+            {
+                buffer.FixedUpdateInputBuffer();
+            }
+        }
     }
 }

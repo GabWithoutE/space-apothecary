@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f17362e3910496696c23fd64ecd815f, type: 3}
   m_Name: DashMovementDelegate
   m_EditorClassIdentifier: 
-  dashSpeed:
+  dashSpeedModulator: {fileID: 11400000, guid: 447f9ba86db234cc691f5dc7626f5f3d, type: 2}
+  slowestXSpeed:
     UseConstant: 1
-    ConstantValue: 5
+    ConstantValue: 3
+    Variable: {fileID: 0}
+  gravitySpeed:
+    UseConstant: 1
+    ConstantValue: 6
     Variable: {fileID: 0}
   dashDirection:
     UseConstant: 0
     ConstantValue: {x: 0, y: 0, z: 0}
     Variable: {fileID: 11400000, guid: de04561d15196432f8798bb0b7937ea0, type: 2}
-  numberOfFrames:
-    UseConstant: 1
-    ConstantValue: 10
-    Variable: {fileID: 0}
   xObstacleDetector: {fileID: 11400000, guid: e2acd1870e06f4259935b3d61434b4bb, type: 2}
   yObstacleDetector: {fileID: 11400000, guid: 2c0897f12da4444949f75eb053e36180, type: 2}

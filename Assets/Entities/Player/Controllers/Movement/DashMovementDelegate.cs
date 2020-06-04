@@ -9,35 +9,46 @@ namespace Entities.Player.Controllers.Movement
     [CreateAssetMenu(menuName = "Movement/DashMovement")]
     public class DashMovementDelegate : ScriptableObject
     {
-        public FloatReference dashSpeed;
+        public FloatModulator dashSpeedModulator;
+        public FloatReference slowestXSpeed;
+        public FloatReference gravitySpeed;
         public Vector3Reference dashDirection;
-        public IntReference numberOfFrames;
 
         public DetectCollisionDelegate xObstacleDetector;
         public DetectCollisionDelegate yObstacleDetector;
 
-        public void Move(Transform entityTransform, int currentFrame)
+        public void Move(Transform entityTransform, float currentDashingTime)
         {
-            if (currentFrame < numberOfFrames)
-            {
-                Vector2 movementVector = dashDirection.Value * dashSpeed;
-                float xDashSpeed = movementVector.x;
-                float yDashSpeed = movementVector.y;
+            float dashSpeed = dashSpeedModulator.Output(currentDashingTime);
+            Vector2 movementVector = dashDirection.Value * dashSpeed;
 
-                movementVector.x = SpeedToNotClipObstacle(
-                    entityTransform,
-                    xObstacleDetector,
-                    xDashSpeed < 0,
-                    xDashSpeed);
+            // TODO: make it so that dash transitions smoothly into horizontal movement and otherwise.
+            // if (Mathf.Abs(movementVector.x) < slowestXSpeed)
+            //     if (movementVector.x < 0)
+            //         movementVector.x = -slowestXSpeed;
+            //     else
+            //         movementVector.x = slowestXSpeed;
+            //
+            // if (movementVector.y < 0 && movementVector.y > gravitySpeed)
+            //     movementVector.y = gravitySpeed;
 
-                movementVector.y = SpeedToNotClipObstacle(
-                    entityTransform,
-                    yObstacleDetector,
-                    false,
-                    yDashSpeed);
 
-                entityTransform.position += (Vector3) movementVector;
-            }
+            float xDashVelocity = movementVector.x;
+            float yDashVelocity = movementVector.y;
+
+            movementVector.x = SpeedToNotClipObstacle(
+                entityTransform,
+                xObstacleDetector,
+                xDashVelocity < 0,
+                xDashVelocity);
+
+            movementVector.y = SpeedToNotClipObstacle(
+                entityTransform,
+                yObstacleDetector,
+                false,
+                yDashVelocity);
+
+            entityTransform.position += (Vector3) movementVector;
         }
 
         private float SpeedToNotClipObstacle(
@@ -55,9 +66,7 @@ namespace Entities.Player.Controllers.Movement
             bool hasHit = GameCorePhysics2D.HasHit(obstacleHit);
 
             if (hasHit && obstacleHit.distance < Mathf.Abs(velocityInCollisionDirection))
-            {
                 return obstacleHit.distance;
-            }
 
             return velocityInCollisionDirection;
         }

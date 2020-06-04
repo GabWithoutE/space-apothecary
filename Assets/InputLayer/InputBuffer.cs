@@ -13,8 +13,8 @@ namespace InputLayer
         public int bufferSize;
         [SerializeField]
         private List<InputState> _buffer;
-        private int _blockForFrames = 0;
         private bool _blocked = false;
+        private float _blockForTime = 0;
 
         void OnEnable()
         {
@@ -25,14 +25,21 @@ namespace InputLayer
             }
         }
 
+        public void FixedUpdateInputBuffer()
+        {
+            if (_blocked)
+                _blockForTime -= Time.fixedDeltaTime;
+            _blocked = _blockForTime > 0;
+        }
+
         public void UpdateInputBuffer()
         {
             // if this buffer has been told to block for frames, the _blocked boolean will be true, subtract the remaining
             //     frames.
-            if (_blocked)
-                _blockForFrames--;
-
-            _blocked = _blockForFrames > 0;
+            // if (_blocked)
+            //     _blockForFrames--;
+            //
+            // _blocked = _blockForFrames > 0;
 
             // move all values forward, except for the last value, which stays in order to be used in update computation
             //     Ex. previous held button, continues to be held -> increment, or previous held button no longer held
@@ -46,12 +53,12 @@ namespace InputLayer
 
         public bool IsBlocked()
         {
-            return _blockForFrames > 0;
+            return _blockForTime > 0;
         }
 
-        public void BlockExecution(int frames)
+        public void BlockExecution(float time)
         {
-            _blockForFrames = frames;
+            _blockForTime = time;
         }
 
         public bool IsBufferedInputAvailable(Func<InputState, bool> stateCondition)
@@ -103,7 +110,7 @@ namespace InputLayer
     public interface IBufferExecutor
     {
         void ExecuteBufferOnCondition(Func<InputState, bool> stateCondition);
-        void BlockExecution(int frames);
+        void BlockExecution(float time);
     }
 
     // Interface for components updating the buffer
