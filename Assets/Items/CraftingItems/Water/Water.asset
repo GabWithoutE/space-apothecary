@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f03ab3eb3194da89a427e22f7f412a, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
+  interpolationFactor:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0d2f25b2b50b74df39017d6373b6d394, type: 2}
   emptyGameObject: {fileID: 5049826167780506066, guid: e7c0151888fa64d3db5c4abd6142ba89,
     type: 3}
   Size: {x: 10, y: 10, z: 1}

@@ -20,3 +20,7 @@ MonoBehaviour:
   CollisionDelegate: {fileID: 11400000, guid: 2a6c1fb4f3a29493983f5ceb992d0289, type: 2}
   ItemMovementDelegate: {fileID: 11400000, guid: ca49379388cb1401c9adeeff6482fe9e,
     type: 2}
+  interpolationFactor:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0d2f25b2b50b74df39017d6373b6d394, type: 2}

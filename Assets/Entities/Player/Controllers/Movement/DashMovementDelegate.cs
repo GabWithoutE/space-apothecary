@@ -10,28 +10,16 @@ namespace Entities.Player.Controllers.Movement
     public class DashMovementDelegate : ScriptableObject
     {
         public FloatModulator dashSpeedModulator;
-        public FloatReference slowestXSpeed;
-        public FloatReference gravitySpeed;
         public Vector3Reference dashDirection;
 
         public DetectCollisionDelegate xObstacleDetector;
-        public DetectCollisionDelegate yObstacleDetector;
+        public DetectCollisionDelegate groundObstacleDetector;
+        public DetectCollisionDelegate ceilingObstacleDetector;
 
         public void Move(Transform entityTransform, float currentDashingTime)
         {
             float dashSpeed = dashSpeedModulator.Output(currentDashingTime);
             Vector2 movementVector = dashDirection.Value * dashSpeed;
-
-            // TODO: make it so that dash transitions smoothly into horizontal movement and otherwise.
-            // if (Mathf.Abs(movementVector.x) < slowestXSpeed)
-            //     if (movementVector.x < 0)
-            //         movementVector.x = -slowestXSpeed;
-            //     else
-            //         movementVector.x = slowestXSpeed;
-            //
-            // if (movementVector.y < 0 && movementVector.y > gravitySpeed)
-            //     movementVector.y = gravitySpeed;
-
 
             float xDashVelocity = movementVector.x;
             float yDashVelocity = movementVector.y;
@@ -44,7 +32,7 @@ namespace Entities.Player.Controllers.Movement
 
             movementVector.y = SpeedToNotClipObstacle(
                 entityTransform,
-                yObstacleDetector,
+                movementVector.y < 0 ? groundObstacleDetector : ceilingObstacleDetector,
                 false,
                 yDashVelocity);
 

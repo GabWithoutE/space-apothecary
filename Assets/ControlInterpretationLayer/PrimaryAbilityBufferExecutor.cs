@@ -10,8 +10,6 @@ namespace ControlInterpretationLayer
     public class PrimaryAbilityBufferExecutor : InputInterpreter
     {
         public InputBuffer primaryAbilityBuffer;
-        public InputBuffer rightMovementBuffer;
-        public InputBuffer leftMovementBuffer;
 
         public BoolVariable attacking;
         public BoolReference grounded;
@@ -37,8 +35,9 @@ namespace ControlInterpretationLayer
                 //     control to take over unimpeded.
                 if (grounded.Value)
                 {
-                    rightMovementBuffer.BlockExecution(blockingTime);
-                    leftMovementBuffer.BlockExecution(blockingTime);
+                    // TODO: block the non buffered inputs
+                    // rightMovementBuffer.BlockExecution(blockingTime);
+                    // leftMovementBuffer.BlockExecution(blockingTime);
                 }
 
                 // block self for specified number of frames to prevent re-triggering before desired
