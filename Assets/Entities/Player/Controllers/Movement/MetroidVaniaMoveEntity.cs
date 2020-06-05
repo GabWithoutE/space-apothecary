@@ -11,6 +11,7 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
 {
     public GameEvent groundedEvent;
     public BoolVariable grounded;
+    public BoolVariable ceilingHit;
     public BoolVariable attacking;
     public BoolVariable dashing;
 
@@ -22,6 +23,8 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
 
     public MoveEntityOnAxisDelegate gravityDelegate;
     public DetectCollisionDelegate groundCollisionDetector;
+    public DetectCollisionDelegate ceilingCollisionDetector;
+
 
     public MoveEntityOnAxisDelegate RunningDelegate;
     public MoveEntityOnAxisDelegate primaryAttackMovementDelegate;
@@ -38,16 +41,15 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
     public override void FixedMove(Transform entityTransform)
     {
         SetGroundedState(entityTransform);
+        SetCeilingHitState(entityTransform);
 
         ComputeTimeModifiers();
 
         if (!dashing.Value)
-        {
             if (!jumpInstruction.Value)
                 gravityDelegate.Move(entityTransform, uninteruptedFallTime, false);
             else
                 jumpDelegate.Move(entityTransform, _uninteruptedJumptime, false);
-        }
 
         if (XDirection.Value != 0)
             RunningDelegate.Move(entityTransform, uninteruptedRunTime, XDirection.Value == -1);
@@ -95,11 +97,17 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
     private void SetGroundedState(Transform entityTransform)
     {
         bool collidingWithGround = groundCollisionDetector.IsColliding(entityTransform, false);
-        grounded.SetValue(groundCollisionDetector.IsColliding(entityTransform, false));
+        grounded.SetValue(collidingWithGround);
 
-        if (collidingWithGround)
-        {
-            groundedEvent.Raise();
-        }
+        // TODO: maybe only trigger events when the values are changed, not just when it's true...
+        // if (collidingWithGround)
+        // {
+        //     groundedEvent.Raise();
+        // }
+    }
+
+    private void SetCeilingHitState(Transform entityTransform)
+    {
+        ceilingHit.SetValue(ceilingCollisionDetector.IsColliding(entityTransform, false));
     }
 }

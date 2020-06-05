@@ -7,41 +7,39 @@ using UnityEngine;
 namespace ControlInterpretationLayer
 {
     [CreateAssetMenu(menuName = "BufferExecutor/SecondaryAbility")]
-    public class SecondaryAbilityBufferExecutor : InputInterpreter
+    public class DashBufferExecutor : InputInterpreter
     {
         public InputBuffer secondaryAbilityBuffer;
 
         public BoolVariable dashing;
         public BoolReference grounded;
         public FloatReference blockingTime;
+        public BoolReference ceilingHit;
 
         public Vector3Reference playerPosition;
         public Vector3Variable secondaryAbilityDirection;
         public CameraVariable cameraVariable;
 
-        private bool _jumpAvailable = false;
+        private bool _dashAvailable = false;
 
         public override void Initialize() { }
 
         public override void Update()
         {
             if (grounded.Value)
-                _jumpAvailable = true;
+                _dashAvailable = true;
 
             if (secondaryAbilityBuffer.IsBlocked())
             {
-                if (grounded.Value)
+                if (ceilingHit.Value && dashing.Value)
                 {
-                    Vector2 playerToMouseVector = GetPlayerToMouseVector();
-                    secondaryAbilityDirection.SetValue(
-                        GetNearestHorizontalDirection(playerToMouseVector.x)
-                    );
+                    _dashAvailable = false;
+                    dashing.SetValue(false);
                 }
-                // TODO: Here if hit an npc, don't do primary ability
                 return;
             }
 
-            if (_jumpAvailable && secondaryAbilityBuffer.IsBufferedInputAvailable(state => state.state == 1))
+            if (_dashAvailable && secondaryAbilityBuffer.IsBufferedInputAvailable(state => state.state == 1))
             {
                 secondaryAbilityBuffer.BlockExecution(blockingTime);
                 secondaryAbilityBuffer.ExecuteBufferOnCondition(state => state.state == 1);
@@ -50,7 +48,7 @@ namespace ControlInterpretationLayer
 
                 // Here if hit an npc, don't do primary ability
                 Vector2 playerToMouseVector = GetPlayerToMouseVector();
-                _jumpAvailable = false;
+                _dashAvailable = false;
 
                 if (grounded.Value)
                 {

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundedEvent: {fileID: 11400000, guid: 7d35f119b89c74e23a960ad79837f059, type: 2}
   grounded: {fileID: 11400000, guid: b78dbc33703244a61b3248eb3a33ff45, type: 2}
+  ceilingHit: {fileID: 11400000, guid: a8d6bc3cbb68d47b295e4195457acdcb, type: 2}
   attacking: {fileID: 11400000, guid: 001c9a7ccbed144a5b299e45a3e1cc58, type: 2}
   dashing: {fileID: 11400000, guid: 5bdebb6dcf3314f56b8865b0fda25637, type: 2}
   XDirection: {fileID: 11400000, guid: 085f07cff040144a2b2ab4a1f4a690ff, type: 2}
@@ -22,6 +23,8 @@ MonoBehaviour:
   jumpDelegate: {fileID: 11400000, guid: d1c0a5017b267437c9d0c1ef6719fad5, type: 2}
   gravityDelegate: {fileID: 11400000, guid: 0985df53273d24439abb399cdc21ed13, type: 2}
   groundCollisionDetector: {fileID: 11400000, guid: e276358df78f7459d80e15f308a3aa5e,
+    type: 2}
+  ceilingCollisionDetector: {fileID: 11400000, guid: 2f1f05b211a0e4d629d8615349583e10,
     type: 2}
   RunningDelegate: {fileID: 11400000, guid: 9c0ab16e074104b60880bc43135c1def, type: 2}
   primaryAttackMovementDelegate: {fileID: 11400000, guid: 009fa8a71dd23456696d2c3b13c90482,

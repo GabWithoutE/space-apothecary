@@ -17,6 +17,10 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: b78dbc33703244a61b3248eb3a33ff45, type: 2}
+  ceilingHit:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: a8d6bc3cbb68d47b295e4195457acdcb, type: 2}
   maxJumpTime:
     UseConstant: 0
     ConstantValue: 0

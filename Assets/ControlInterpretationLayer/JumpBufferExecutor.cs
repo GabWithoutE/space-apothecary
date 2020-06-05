@@ -11,6 +11,7 @@ namespace ControlInterpretationLayer {
     {
         public InputBuffer jumpBuffer;
         public BoolReference grounded;
+        public BoolReference ceilingHit;
         public FloatReference maxJumpTime;
         public FloatReference jumpSlowdownTime;
 
@@ -38,6 +39,12 @@ namespace ControlInterpretationLayer {
             bool jumpTimeAvailable = _uninteruptedJumptime < maxJumpTime.Value + jumpSlowdownTime.Value;
             bool releasedJump = jumpBuffer.IsBufferedInputAvailable(state => state.state == -1);
             bool notPressedJump = jumpBuffer.IsBufferedInputAvailable(state => state.state == 0);
+
+            if (ceilingHit.Value)
+            {
+                jumpAvailable.SetValue(false);
+                return;
+            }
 
             if (grounded.Value && (releasedJump || notPressedJump))
             {

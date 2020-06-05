@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondaryAbilityBuffer: {fileID: 11400000, guid: 1b96b9e9dd04e49afb7b2858bf2285b5,
     type: 2}
-  leftBuffer: {fileID: 11400000, guid: a0f3bd26b925c45bd8b82c1718340620, type: 2}
-  rightBuffer: {fileID: 11400000, guid: ad49379ed6a54492695d41fefc5b79d1, type: 2}
   dashing: {fileID: 11400000, guid: 5bdebb6dcf3314f56b8865b0fda25637, type: 2}
   grounded:
     UseConstant: 0
@@ -25,6 +23,10 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0.29
     Variable: {fileID: 0}
+  ceilingHit:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: a8d6bc3cbb68d47b295e4195457acdcb, type: 2}
   playerPosition:
     UseConstant: 0
     ConstantValue: {x: 0, y: 0, z: 0}
