@@ -15,11 +15,12 @@ public class BossPlaytDieAndSpawnWaterfall : MonoBehaviour
 
     private bool isHit;
     public int hits = 4;
+    public string maskName = "Attack";
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = slashDetector.DetectCollisionRaycast(transform, false);
+        RaycastHit2D hit = slashDetector.DetectCollisionRaycast(transform, false, maskName);
         if (GameCorePhysics2D.HasHit(hit))
         {
             if (!isHit)

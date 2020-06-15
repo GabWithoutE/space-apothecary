@@ -31,9 +31,9 @@ namespace GameCore.Collision
          useEvent = CollisionEvent != null;
       }
 
-      public RaycastHit2D DetectCollisionRaycast(Transform casterTransform, bool flipDirection)
+      public RaycastHit2D DetectCollisionRaycast(Transform casterTransform, bool flipDirection, string maskName = "Raycast")
       {
-         RaycastHit2D hit = CastRays(casterTransform, flipDirection);
+         RaycastHit2D hit = CastRays(casterTransform, flipDirection, maskName);
 
          if (useEvent &&  GameCorePhysics2D.HasHit(hit))
             CollisionEvent.Raise();
@@ -41,9 +41,9 @@ namespace GameCore.Collision
          return hit;
       }
 
-      public bool IsColliding(Transform casterTransform, bool flipDirection)
+      public bool IsColliding(Transform casterTransform, bool flipDirection, string maskName = "Raycast")
       {
-         bool hit = GameCorePhysics2D.HasHit(CastRays(casterTransform, flipDirection));
+         bool hit = GameCorePhysics2D.HasHit(CastRays(casterTransform, flipDirection, maskName));
 
          if (useEvent && hit)
             CollisionEvent.Raise();
@@ -51,7 +51,7 @@ namespace GameCore.Collision
          return hit;
       }
 
-      private RaycastHit2D CastRays(Transform casterTransform, bool flipDirection)
+      private RaycastHit2D CastRays(Transform casterTransform, bool flipDirection, string maskName)
       {
          float nearestHitDistance = Mathf.Infinity;
          RaycastHit2D outputHit = new RaycastHit2D();
@@ -68,7 +68,7 @@ namespace GameCore.Collision
                (Vector2) casterTransform.position + ray.OriginPosition,
                ray.Direction,
                ray.Distance,
-               LayerMask.GetMask("Raycast"),
+               LayerMask.GetMask(maskName),
                CollisionTags
             );
 
