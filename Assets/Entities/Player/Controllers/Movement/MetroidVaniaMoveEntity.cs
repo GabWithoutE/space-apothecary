@@ -16,7 +16,6 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
     public BoolVariable dashing;
 
     public IntVariable XDirection;
-    public IntVariable YDirection;
     public BoolVariable jumpInstruction;
 
     public MoveEntityOnAxisDelegate jumpDelegate;
@@ -55,12 +54,16 @@ public class MetroidVaniaMoveEntity : MoveEntityDelegate
             RunningDelegate.Move(entityTransform, uninteruptedRunTime, XDirection.Value == -1);
 
         if (grounded.Value && attacking.Value && primaryAttackDirection.Value.x != 0)
+        {
             // do the movement for attacking
             primaryAttackMovementDelegate.Move(
                 entityTransform,
                 _currentAttackTime,
                 primaryAttackDirection.Value.x < 0
             );
+            Debug.Log("wtf");
+
+        }
 
         if (dashing.Value)
             dashMovementDelegate.Move(entityTransform, _currentDashTime);

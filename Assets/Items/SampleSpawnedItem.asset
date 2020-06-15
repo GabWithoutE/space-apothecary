@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7105f06f9e2747089be672054d06edeb, type: 3}
   m_Name: SampleSpawnedItem
   m_EditorClassIdentifier: 
+  interpolationFactor:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0d2f25b2b50b74df39017d6373b6d394, type: 2}
   emptyGameObject: {fileID: 5049826167780506066, guid: e7c0151888fa64d3db5c4abd6142ba89,
     type: 3}
   Size: {x: 10, y: 10, z: 0}
@@ -20,7 +24,3 @@ MonoBehaviour:
   CollisionDelegate: {fileID: 11400000, guid: 2a6c1fb4f3a29493983f5ceb992d0289, type: 2}
   ItemMovementDelegate: {fileID: 11400000, guid: ca49379388cb1401c9adeeff6482fe9e,
     type: 2}
-  interpolationFactor:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 0d2f25b2b50b74df39017d6373b6d394, type: 2}

@@ -24,5 +24,5 @@ MonoBehaviour:
     Direction: {x: 0, y: -1}
     Distance: 1
   CollisionTags:
-  - {fileID: 11400000, guid: ce7bd9c3b9e3641c4a47ebc92b859059, type: 2}
+  - {fileID: 11400000, guid: 4d014753a137247ccaf0c3944fe89efe, type: 2}
   CollisionEvent: {fileID: 0}
