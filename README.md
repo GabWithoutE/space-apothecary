@@ -21,3 +21,6 @@ Learnings/Continued work:
 - Editor work to enable Interface "Serializability"
 - Better File Structure
 - More consistent pattern across the project.
+
+## Next Steps
+Clean up and continue to explore design patterns in Unity. Clean up some of the "out-of-pattern" features. Pull out reusable code to make it accessible as boilerplate for future projects.
